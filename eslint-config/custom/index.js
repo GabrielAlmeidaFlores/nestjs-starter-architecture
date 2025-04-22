@@ -1,7 +1,7 @@
 const requireClassTypePropertyRule = require('./conventions/require-class-type-property.js');
 const restrictImportRule = require('./conventions/restrict-import.js');
 
-module.exports = {
+const conventions = {
   plugin: {
     'custom-rules': {
       rules: {
@@ -16,5 +16,14 @@ module.exports = {
       { propertyName: '_type' },
     ],
     'custom-rules/restrict-import': 'error',
+  },
+};
+
+module.exports = {
+  plugin: {
+    ...conventions.plugin,
+  },
+  rules: {
+    ...conventions.rules,
   },
 };
