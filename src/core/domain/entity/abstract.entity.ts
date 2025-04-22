@@ -1,4 +1,4 @@
-import type { Guid } from '@base/shared/type/value-object/guid.value-object';
+import type { Guid } from '@base/core/domain/entity/value-object/guid.value-object';
 
 export abstract class AbstractEntity {
   constructor(
