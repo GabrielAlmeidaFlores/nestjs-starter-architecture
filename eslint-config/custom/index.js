@@ -1,21 +1,18 @@
-const requireClassTypePropertyRule = require('./conventions/require-class-type-property.js');
-const restrictImportRule = require('./conventions/restrict-import.js');
-
 const conventions = {
   plugin: {
-    'custom-rules': {
+    'convention-rule': {
       rules: {
-        'require-class-type-property': requireClassTypePropertyRule,
-        'restrict-import': restrictImportRule,
+        'require-class-type-property': require('./convention/require-class-type-property.js'),
+        'restrict-import': require('./convention/restrict-import.js'),
       },
     },
   },
   rules: {
-    'custom-rules/require-class-type-property': [
+    'convention-rule/require-class-type-property': [
       'error',
       { propertyName: '_type' },
     ],
-    'custom-rules/restrict-import': 'error',
+    'convention-rule/restrict-import': 'error',
   },
 };
 
