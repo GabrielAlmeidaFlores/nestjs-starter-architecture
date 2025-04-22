@@ -1,4 +1,4 @@
-const conventions = {
+const convention = {
   plugin: {
     'convention-rule': {
       rules: {
@@ -18,9 +18,9 @@ const conventions = {
 
 module.exports = {
   plugin: {
-    ...conventions.plugin,
+    ...convention.plugin,
   },
   rules: {
-    ...conventions.rules,
+    ...convention.rules,
   },
 };
