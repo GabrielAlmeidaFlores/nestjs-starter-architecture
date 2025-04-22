@@ -7,15 +7,15 @@ const tsparser = require('@typescript-eslint/parser');
 // =============================================
 // Core rule sets
 // =============================================
-const jsrules = require('./eslint-config/rules/core/javascript.js');
-const tsrules = require('./eslint-config/rules/core/typescript.js');
-const importrules = require('./eslint-config/rules/core/import.js');
+const javascriptRule = require('./eslint-config/rules/core/javascript.js');
+const typescriptRule = require('./eslint-config/rules/core/typescript.js');
+const importRules = require('./eslint-config/rules/core/import.js');
 
 // =============================================
 // Custom rules
 // =============================================
-const requireClassTypeProperty = require('./eslint-config/rules/typescript/require-class-type-property.js');
-const restrictImport = require('./eslint-config/rules/typescript/restrict-import.js');
+const requireClassTypePropertyRule = require('./eslint-config/rules/typescript/require-class-type-property.js');
+const restrictImportRule = require('./eslint-config/rules/typescript/restrict-import.js');
 
 // =============================================
 // Plugin Configuration
@@ -29,8 +29,8 @@ const plugins = {
   // Custom rules plugin
   'custom-rules': {
     rules: {
-      'require-class-type-property': requireClassTypeProperty,
-      'restrict-import': restrictImport,
+      'require-class-type-property': requireClassTypePropertyRule,
+      'restrict-import': restrictImportRule,
     },
   },
 };
@@ -78,9 +78,9 @@ module.exports = [
       'prettier/prettier': 'error',
 
       // Imported rule sets
-      ...jsrules,
-      ...tsrules,
-      ...importrules,
+      ...javascriptRule,
+      ...typescriptRule,
+      ...importRules,
 
       // Custom rules
       'custom-rules/require-class-type-property': [
