@@ -5,34 +5,19 @@ const globals = require('globals');
 const tsparser = require('@typescript-eslint/parser');
 
 // =============================================
-// Core rule sets
+// Rules
 // =============================================
-const javascriptRule = require('./eslint-config/rules/core/javascript.js');
-const typescriptRule = require('./eslint-config/rules/core/typescript.js');
-const importRules = require('./eslint-config/rules/core/import.js');
-
-// =============================================
-// Custom rules
-// =============================================
-const requireClassTypePropertyRule = require('./eslint-config/rules/typescript/require-class-type-property.js');
-const restrictImportRule = require('./eslint-config/rules/typescript/restrict-import.js');
+const coreConfig = require('./eslint-config/core/index.js');
+const customConfig = require('./eslint-config/custom/index.js');
 
 // =============================================
 // Plugin Configuration
 // =============================================
 const plugins = {
-  // Official plugins
   '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
   import: require('eslint-plugin-import'),
   prettier: require('eslint-plugin-prettier'),
-
-  // Custom rules plugin
-  'custom-rules': {
-    rules: {
-      'require-class-type-property': requireClassTypePropertyRule,
-      'restrict-import': restrictImportRule,
-    },
-  },
+  ...customConfig.plugin,
 };
 
 // =============================================
@@ -41,8 +26,6 @@ const plugins = {
 module.exports = [
   {
     files: ['{src,apps,libs,test}/**/*.ts'],
-
-    // Language and parsing options
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -57,8 +40,6 @@ module.exports = [
         ...globals.es2021,
       },
     },
-
-    // Plugin settings
     settings: {
       'import/resolver': {
         typescript: {
@@ -67,27 +48,11 @@ module.exports = [
         },
       },
     },
-
-    // Plugin registration
-    plugins: {
-      ...plugins,
-    },
-
-    // Rule definitions
+    plugins,
     rules: {
       'prettier/prettier': 'error',
-
-      // Imported rule sets
-      ...javascriptRule,
-      ...typescriptRule,
-      ...importRules,
-
-      // Custom rules
-      'custom-rules/require-class-type-property': [
-        'error',
-        { propertyName: '_type' },
-      ],
-      'custom-rules/restrict-import': 'error',
+      ...coreConfig.rules,
+      ...customConfig.rules,
     },
   },
 
