@@ -4,6 +4,7 @@ module.exports = {
     { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
   ],
   '@typescript-eslint/explicit-module-boundary-types': 'error',
+  '@typescript-eslint/explicit-function-return-type': 'warn',
   '@typescript-eslint/no-explicit-any': 'error',
   '@typescript-eslint/no-non-null-assertion': 'error',
   '@typescript-eslint/no-unsafe-assignment': 'error',
@@ -27,5 +28,9 @@ module.exports = {
   '@typescript-eslint/no-empty-function': 'error',
   '@typescript-eslint/no-empty-interface': 'error',
   '@typescript-eslint/no-inferrable-types': 'error',
-  '@typescript-eslint/explicit-function-return-type': 'warn',
+  '@typescript-eslint/no-useless-constructor': 'error',
+  '@typescript-eslint/no-extraneous-class': 'error',
+  '@typescript-eslint/no-meaningless-void-operator': 'error',
+  '@typescript-eslint/no-unnecessary-condition': 'warn',
+  '@typescript-eslint/member-ordering': 'warn',
 };
