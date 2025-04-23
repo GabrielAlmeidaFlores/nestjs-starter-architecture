@@ -4,9 +4,6 @@ export class Guid {
   protected readonly _type = Guid.name;
 
   constructor(value: string) {
-    if (!Guid.isValid(value)) {
-      throw new Error(`Invalid GUID: ${value}`);
-    }
     this.value = value;
   }
 

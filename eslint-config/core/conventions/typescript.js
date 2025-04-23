@@ -18,7 +18,6 @@ module.exports = {
   '@typescript-eslint/no-unnecessary-type-assertion': 'error',
   '@typescript-eslint/prefer-nullish-coalescing': 'error',
   '@typescript-eslint/prefer-optional-chain': 'error',
-  '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
   '@typescript-eslint/consistent-type-imports': [
     'error',
     { prefer: 'type-imports' },
