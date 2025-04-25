@@ -4,6 +4,7 @@ const convention = {
       rules: {
         'require-class-type-property': require('./convention/require-class-type-property.js'),
         'restrict-import': require('./convention/restrict-import.js'),
+        'require-kebab-case-base-filename': require('./convention/require-kebab-case-base-filename.js'),
       },
     },
   },
@@ -13,6 +14,7 @@ const convention = {
       { propertyName: '_type' },
     ],
     'convention-rule/restrict-import': 'error',
+    'convention-rule/require-kebab-case-base-filename': 'error',
   },
 };
 
