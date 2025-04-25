@@ -1,4 +1,4 @@
-import { InvalidInputError } from '@base/core/domain/error/invalid-input.error';
+import { InvalidGuidError } from '@base/core/domain/entity/abstract/value-object/guid/error/invalid-guid.error';
 import { Fail } from '@base/shared/feature/functional/fail.function';
 import { Ok } from '@base/shared/feature/functional/ok.function';
 
@@ -13,9 +13,9 @@ export class Guid {
     this.value = value;
   }
 
-  static create(value: string): Either<InvalidInputError, Guid> {
+  static create(value: string): Either<InvalidGuidError, Guid> {
     if (!Guid.isValid(value)) {
-      return Fail(new InvalidInputError(`Invalid ${this.name}: ${value}`));
+      return Fail(new InvalidGuidError());
     }
 
     return Ok(new Guid(value));

@@ -1,4 +1,4 @@
-import { InvalidInputError } from '@base/core/domain/error/invalid-input.error';
+import { InvalidFederalDocumentError } from '@base/core/domain/entity/user/value-object/federal-document/error/invalid-federal-document.error';
 import { Fail } from '@base/shared/feature/functional/fail.function';
 import { Ok } from '@base/shared/feature/functional/ok.function';
 
@@ -10,15 +10,14 @@ export class FederalDocument {
   protected readonly _type = FederalDocument.name;
 
   private constructor(value: string) {
-    if (!FederalDocument.isValid(value)) {
-      throw new InvalidInputError(`Invalid ${this._type}: ${value}`);
-    }
     this.value = value;
   }
 
-  static create(value: string): Either<InvalidInputError, FederalDocument> {
+  static create(
+    value: string,
+  ): Either<InvalidFederalDocumentError, FederalDocument> {
     if (!FederalDocument.isValid(value)) {
-      return Fail(new InvalidInputError(`Invalid ${this.name}: ${value}`));
+      return Fail(new InvalidFederalDocumentError());
     }
 
     return Ok(new FederalDocument(value));

@@ -1,4 +1,4 @@
-import { InvalidInputError } from '@base/core/domain/error/invalid-input.error';
+import { InvalidEmailError } from '@base/core/domain/entity/user/value-object/email/error/invalid-email.error';
 import { Fail } from '@base/shared/feature/functional/fail.function';
 import { Ok } from '@base/shared/feature/functional/ok.function';
 
@@ -10,15 +10,12 @@ export class Email {
   protected readonly _type = Email.name;
 
   private constructor(value: string) {
-    if (!Email.isValid(value)) {
-      throw new InvalidInputError(`Invalid ${this._type}: ${value}`);
-    }
     this.value = value;
   }
 
-  static create(value: string): Either<InvalidInputError, Email> {
+  static create(value: string): Either<InvalidEmailError, Email> {
     if (!Email.isValid(value)) {
-      return Fail(new InvalidInputError(`Invalid ${this.name}: ${value}`));
+      return Fail(new InvalidEmailError());
     }
 
     return Ok(new Email(value));
