@@ -1,6 +1,7 @@
+import type { BaseError } from '@base/shared/error/base.error';
 import type { Either } from '@base/shared/feature/functional/either.type';
 
-export class Failure<E> {
+export class Failure<E extends BaseError> {
   protected readonly _type: string = Failure.name;
 
   constructor(readonly error: E) {}
