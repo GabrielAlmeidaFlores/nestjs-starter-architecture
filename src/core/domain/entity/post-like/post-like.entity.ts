@@ -3,7 +3,6 @@ import { Ok } from '@base/shared/feature/functional/ok.function';
 
 import type { PostEntityPropsInterface } from '@base/core/domain/entity/post/post.entity.props';
 import type { UserEntity } from '@base/core/domain/entity/user/user.entity';
-import type { InvalidInputError } from '@base/core/domain/error/invalid-input.error';
 import type { Either } from '@base/shared/feature/functional/either.type';
 
 export class PostEntity extends AbstractEntity {
@@ -21,9 +20,7 @@ export class PostEntity extends AbstractEntity {
     this.user = props.user;
   }
 
-  static create(
-    props: PostEntityPropsInterface,
-  ): Either<InvalidInputError, PostEntity> {
+  static create(props: PostEntityPropsInterface): Either<never, PostEntity> {
     return Ok(new PostEntity(props));
   }
 }
