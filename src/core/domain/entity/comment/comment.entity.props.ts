@@ -5,6 +5,6 @@ import type { PostEntity } from '@base/core/domain/entity/post/post.entity';
 export interface CommentEntityPropsInterface
   extends AbstractEntityPropsInterface {
   value: string;
-  post?: PostEntity;
+  post: PostEntity;
   comment?: CommentEntity;
 }
