@@ -42,8 +42,11 @@ export class UserEntity extends AbstractEntity {
 
   static isDateOfBirthValid(dateOfBirth: Date): boolean {
     const today = new Date();
+
+    const requiredMinimumAge = 18;
+
     const eighteenYearsAgo = new Date(
-      today.getFullYear() - 18,
+      today.getFullYear() - requiredMinimumAge,
       today.getMonth(),
       today.getDate(),
     );
