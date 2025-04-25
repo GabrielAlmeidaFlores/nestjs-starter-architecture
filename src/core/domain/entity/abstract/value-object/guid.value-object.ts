@@ -1,16 +1,27 @@
+import { InvalidInputError } from '@base/core/domain/error/invalid-input.error';
+import { Fail } from '@base/shared/feature/functional/fail.function';
+import { Ok } from '@base/shared/feature/functional/ok.function';
+
+import type { Either } from '@base/shared/feature/functional/either.type';
+
 export class Guid {
   public readonly value: string;
 
   protected readonly _type = Guid.name;
 
-  constructor(value: string) {
-    if (!Guid.isValid(value)) {
-      throw new Error(`Invalid ${this._type}: ${value}`);
-    }
+  private constructor(value: string) {
     this.value = value;
   }
 
-  static create(): Guid {
+  static create(value: string): Either<InvalidInputError, Guid> {
+    if (!Guid.isValid(value)) {
+      return Fail(new InvalidInputError(`Invalid ${this.name}: ${value}`));
+    }
+
+    return Ok(new Guid(value));
+  }
+
+  static generate(): Guid {
     const guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
       /[xy]/g,
       (c) => {
