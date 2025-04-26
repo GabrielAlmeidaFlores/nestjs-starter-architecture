@@ -4,7 +4,7 @@
     "paths": {
       "@core/*": ["./src/core/*"],
       "@shared/*": ["./src/shared/*"],
-      "@base/*": ["./src/*"],
+      "@base/*": ["./src/*"]
     },
 
     // === Strict Type-Checking Options ===
@@ -63,7 +63,11 @@
     "isolatedModules": true,
     "disableReferencedProjectLoad": true,
     "disableSolutionSearching": true,
-    "disableSourceOfProjectReferenceRedirect": true
+    "disableSourceOfProjectReferenceRedirect": true,
+
+    // Decorators Settings
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
 
   // === File Inclusion/Exclusion ===
