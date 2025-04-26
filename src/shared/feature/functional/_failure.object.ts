@@ -18,7 +18,9 @@ export class Failure<E extends BaseError> {
     return this;
   }
 
-  flatMap<U, F>(_fn: (value: never) => Either<F, U>): Failure<E> {
+  flatMap<U, F extends BaseError>(
+    _fn: (value: never) => Either<F, U>,
+  ): Failure<E> {
     return this;
   }
 

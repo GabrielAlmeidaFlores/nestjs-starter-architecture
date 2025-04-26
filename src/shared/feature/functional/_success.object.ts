@@ -1,3 +1,4 @@
+import type { BaseError } from '@base/shared/error/base.error';
 import type { Either } from '@base/shared/feature/functional/either.type';
 
 export class Success<T> {
@@ -17,7 +18,9 @@ export class Success<T> {
     return new Success(fn(this.value));
   }
 
-  flatMap<U, F>(fn: (value: T) => Either<F, U>): Either<F, U> {
+  flatMap<U, F extends BaseError>(
+    fn: (value: T) => Either<F, U>,
+  ): Either<F, U> {
     return fn(this.value);
   }
 
