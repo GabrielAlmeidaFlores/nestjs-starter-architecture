@@ -1,4 +1,4 @@
-import { AbstractEntity } from '@base/core/domain/entity/abstract/abstract.entity';
+import { BaseEntity } from '@base/core/domain/entity/base/base.entity';
 import { Ok } from '@base/shared/feature/functional/ok.function';
 
 import type { CommentEntity } from '@base/core/domain/entity/comment/comment.entity';
@@ -6,7 +6,7 @@ import type { CommentLikeEntityPropsInterface } from '@base/core/domain/entity/c
 import type { UserEntity } from '@base/core/domain/entity/user/user.entity';
 import type { Either } from '@base/shared/feature/functional/either.type';
 
-export class CommentLikeEntity extends AbstractEntity {
+export class CommentLikeEntity extends BaseEntity {
   public comment: CommentEntity;
   public user: UserEntity;
 

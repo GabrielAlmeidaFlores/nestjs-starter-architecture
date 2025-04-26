@@ -1,4 +1,4 @@
-import { InvalidGuidError } from '@base/core/domain/entity/abstract/value-object/guid/error/invalid-guid.error';
+import { InvalidGuidError } from '@base/core/domain/entity/base/value-object/guid/error/invalid-guid.error';
 import { Fail } from '@base/shared/feature/functional/fail.function';
 import { Ok } from '@base/shared/feature/functional/ok.function';
 

@@ -1,4 +1,4 @@
-import { AbstractEntity } from '@base/core/domain/entity/abstract/abstract.entity';
+import { BaseEntity } from '@base/core/domain/entity/base/base.entity';
 import { UserTooYoungError } from '@base/core/domain/entity/user/error/user-too-young.error';
 import { Fail } from '@base/shared/feature/functional/fail.function';
 import { Ok } from '@base/shared/feature/functional/ok.function';
@@ -9,7 +9,7 @@ import type { Email } from '@base/core/domain/entity/user/value-object/email/ema
 import type { FederalDocument } from '@base/core/domain/entity/user/value-object/federal-document/federal-document.value-object';
 import type { Either } from '@base/shared/feature/functional/either.type';
 
-export class UserEntity extends AbstractEntity {
+export class UserEntity extends BaseEntity {
   public name: string;
   public dateOfBirth: Date;
   public gender: GenderEnum;
