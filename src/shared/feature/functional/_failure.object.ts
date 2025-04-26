@@ -1,5 +1,5 @@
-import type { BaseError } from '@base/shared/error/base.error';
-import type { Either } from '@base/shared/feature/functional/either.type';
+import type { Either } from '@shared/feature/functional/either.type';
+import type { BaseError } from '@shared/feature/functional/error/base.error';
 
 export class Failure<E extends BaseError> {
   protected readonly _type: string = Failure.name;

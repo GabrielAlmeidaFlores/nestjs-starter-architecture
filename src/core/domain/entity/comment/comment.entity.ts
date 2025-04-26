@@ -1,9 +1,9 @@
-import { BaseEntity } from '@base/core/domain/entity/base/base.entity';
-import { Ok } from '@base/shared/feature/functional/ok.function';
+import { BaseEntity } from '@core/domain/entity/base/base.entity';
+import { Ok } from '@shared/feature/functional/ok.function';
 
-import type { CommentEntityPropsInterface } from '@base/core/domain/entity/comment/comment.entity.props';
-import type { PostEntity } from '@base/core/domain/entity/post/post.entity';
-import type { Either } from '@base/shared/feature/functional/either.type';
+import type { CommentEntityPropsInterface } from '@core/domain/entity/comment/comment.entity.props';
+import type { PostEntity } from '@core/domain/entity/post/post.entity';
+import type { Either } from '@shared/feature/functional/either.type';
 
 export class CommentEntity extends BaseEntity {
   public value: string;

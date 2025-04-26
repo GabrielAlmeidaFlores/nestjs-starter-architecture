@@ -1,10 +1,10 @@
-import { BaseEntity } from '@base/core/domain/entity/base/base.entity';
-import { Ok } from '@base/shared/feature/functional/ok.function';
+import { BaseEntity } from '@core/domain/entity/base/base.entity';
+import { Ok } from '@shared/feature/functional/ok.function';
 
-import type { PostEntity } from '@base/core/domain/entity/post/post.entity';
-import type { PostLikeEntityPropsInterface } from '@base/core/domain/entity/post-like/post-like.entity.props';
-import type { UserEntity } from '@base/core/domain/entity/user/user.entity';
-import type { Either } from '@base/shared/feature/functional/either.type';
+import type { PostEntity } from '@core/domain/entity/post/post.entity';
+import type { PostLikeEntityPropsInterface } from '@core/domain/entity/post-like/post-like.entity.props';
+import type { UserEntity } from '@core/domain/entity/user/user.entity';
+import type { Either } from '@shared/feature/functional/either.type';
 
 export class PostLikeEntity extends BaseEntity {
   public post: PostEntity;

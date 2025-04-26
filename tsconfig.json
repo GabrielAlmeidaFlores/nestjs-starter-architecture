@@ -2,7 +2,9 @@
   "compilerOptions": {
     // === Path Aliases ===
     "paths": {
-      "@base/*": ["./src/*"]
+      "@core/*": ["./src/core/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@base/*": ["./src/*"],
     },
 
     // === Strict Type-Checking Options ===

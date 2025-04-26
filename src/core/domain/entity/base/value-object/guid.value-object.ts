@@ -1,8 +1,8 @@
-import { InvalidGuidError } from '@base/core/domain/entity/base/value-object/guid/error/invalid-guid.error';
-import { Fail } from '@base/shared/feature/functional/fail.function';
-import { Ok } from '@base/shared/feature/functional/ok.function';
+import { InvalidGuidError } from '@core/domain/entity/base/value-object/guid/error/invalid-guid.error';
+import { Fail } from '@shared/feature/functional/fail.function';
+import { Ok } from '@shared/feature/functional/ok.function';
 
-import type { Either } from '@base/shared/feature/functional/either.type';
+import type { Either } from '@shared/feature/functional/either.type';
 
 export class Guid {
   public readonly value: string;
