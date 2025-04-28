@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { ApplicationVariableInterface } from '@infra/application-variable/application-variable.interface';
+import { ApplicationVariableService } from '@infra/application-variable/application-variable.service';
 import { EnvironmentVariableService } from '@infra/application-variable/implementation/environment-variable/environment-variable.service';
 
 @Module({
@@ -12,8 +13,9 @@ import { EnvironmentVariableService } from '@infra/application-variable/implemen
       useClass: EnvironmentVariableService,
     },
     EnvironmentVariableService,
+    ApplicationVariableService,
   ],
-  exports: [ApplicationVariableInterface],
+  exports: [ApplicationVariableService],
 })
 export class ApplicationVariableModule {
   protected readonly _type = ApplicationVariableModule.name;
