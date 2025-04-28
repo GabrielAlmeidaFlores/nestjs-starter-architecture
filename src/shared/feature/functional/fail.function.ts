@@ -1,4 +1,4 @@
-import { Failure } from '@shared/feature/functional/_failure.object';
+import { Failure } from '@shared/feature/functional/failure.object';
 
 import type { Either } from '@shared/feature/functional/either.type';
 import type { BaseError } from '@shared/feature/functional/error/base.error';

@@ -1,4 +1,4 @@
-import { Success } from '@shared/feature/functional/_success.object';
+import { Success } from '@shared/feature/functional/success.object';
 
 import type { Either } from '@shared/feature/functional/either.type';
 
