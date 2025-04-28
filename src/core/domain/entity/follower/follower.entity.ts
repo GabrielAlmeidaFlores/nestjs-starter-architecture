@@ -39,6 +39,6 @@ export class FollowerEntity extends BaseEntity {
     follower: UserEntity,
     following: UserEntity,
   ): boolean {
-    return follower.id.equals(following.id);
+    return !follower.id.equals(following.id);
   }
 }
