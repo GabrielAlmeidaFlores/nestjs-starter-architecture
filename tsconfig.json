@@ -4,6 +4,7 @@
     "paths": {
       "@core/*": ["./src/core/*"],
       "@shared/*": ["./src/shared/*"],
+      "@infra/*": ["./src/infra/*"],
       "@base/*": ["./src/*"]
     },
 
