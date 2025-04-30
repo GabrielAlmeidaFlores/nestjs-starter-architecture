@@ -6,6 +6,7 @@ import type { QueryFailedError } from '@core/domain/repository/error/query-faile
 import type { FindOptionsInterface } from '@core/domain/repository/interface/find-options.interface';
 import type { ListOptionsInterface } from '@core/domain/repository/interface/list-options.interface';
 import type { ListedResultInterface } from '@core/domain/repository/interface/listed-result.interface';
+import type { QueryDeepPartial } from '@core/domain/repository/type/query-deep-partial.type';
 import type { Either } from '@shared/feature/functional/type/either.type';
 import type { Empty } from '@shared/feature/functional/type/emtpy.type';
 
@@ -14,7 +15,7 @@ export interface BaseRepositoryInterface<T extends BaseEntity> {
 
   update(
     id: Guid,
-    data: DeepPartial<T>,
+    data: QueryDeepPartial<T>,
   ): Promise<Either<EntityNotFoundError | QueryFailedError, Empty>>;
 
   delete(
