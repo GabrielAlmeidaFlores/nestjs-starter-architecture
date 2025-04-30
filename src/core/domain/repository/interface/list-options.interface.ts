@@ -4,5 +4,5 @@ export interface ListOptionsInterface {
   page: number;
   limit: number;
   sortField?: string;
-  search: ListSearchOptionsInterface;
+  search?: ListSearchOptionsInterface;
 }
