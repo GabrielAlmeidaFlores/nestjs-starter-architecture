@@ -10,7 +10,7 @@ import type { Either } from '@shared/feature/functional/type/either.type';
 import type { Empty } from '@shared/feature/functional/type/emtpy.type';
 
 export interface BaseRepositoryInterface<T extends BaseEntity> {
-  create(data: T): Promise<Either<QueryFailedError, Empty>>;
+  create(data: DeepPartial<T>): Promise<Either<QueryFailedError, Empty>>;
 
   update(
     id: Guid,
