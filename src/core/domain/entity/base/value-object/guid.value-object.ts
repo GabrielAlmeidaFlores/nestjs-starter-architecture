@@ -13,7 +13,7 @@ export class Guid {
     this.value = value;
   }
 
-  static create(value: string): Either<InvalidGuidError, Guid> {
+  public static create(value: string): Either<InvalidGuidError, Guid> {
     if (!Guid.isValid(value)) {
       return Fail(new InvalidGuidError());
     }
@@ -21,7 +21,7 @@ export class Guid {
     return Ok(new Guid(value));
   }
 
-  static generate(): Guid {
+  public static generate(): Guid {
     const guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
       /[xy]/g,
       (c) => {
@@ -34,7 +34,7 @@ export class Guid {
     return new Guid(guid);
   }
 
-  static isValid(value: string): boolean {
+  public static isValid(value: string): boolean {
     const guidRegex =
       /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     return guidRegex.test(value);

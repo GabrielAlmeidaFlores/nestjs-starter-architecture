@@ -20,7 +20,9 @@ export class PostEntity extends BaseEntity {
     this.user = props.user;
   }
 
-  static create(props: PostEntityPropsInterface): Either<never, PostEntity> {
+  public static create(
+    props: PostEntityPropsInterface,
+  ): Either<never, PostEntity> {
     return Ok(new PostEntity(props));
   }
 }

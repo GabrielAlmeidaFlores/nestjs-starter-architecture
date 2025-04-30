@@ -20,7 +20,7 @@ export class FollowerEntity extends BaseEntity {
     this.following = props.following;
   }
 
-  static create(
+  public static create(
     props: FollowerEntityPropsInterface,
   ): Either<FollowerAndFollowingMustBeDistinctError, FollowerEntity> {
     if (

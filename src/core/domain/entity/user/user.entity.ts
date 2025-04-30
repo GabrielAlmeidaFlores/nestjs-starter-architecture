@@ -30,7 +30,7 @@ export class UserEntity extends BaseEntity {
     this.federalDocument = props.federalDocument;
   }
 
-  static create(
+  public static create(
     props: UserEntityPropsInterface,
   ): Either<UserTooYoungError, UserEntity> {
     if (!this.isDateOfBirthValid(props.dateOfBirth)) {
@@ -40,7 +40,7 @@ export class UserEntity extends BaseEntity {
     return Ok(new UserEntity(props));
   }
 
-  static isDateOfBirthValid(dateOfBirth: Date): boolean {
+  public static isDateOfBirthValid(dateOfBirth: Date): boolean {
     const today = new Date();
 
     const requiredMinimumAge = 18;

@@ -13,7 +13,7 @@ export class Email {
     this.value = value;
   }
 
-  static create(value: string): Either<InvalidEmailError, Email> {
+  public static create(value: string): Either<InvalidEmailError, Email> {
     if (!Email.isValid(value)) {
       return Fail(new InvalidEmailError());
     }
@@ -21,7 +21,7 @@ export class Email {
     return Ok(new Email(value));
   }
 
-  static isValid(value: string): boolean {
+  public static isValid(value: string): boolean {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     return emailRegex.test(value);

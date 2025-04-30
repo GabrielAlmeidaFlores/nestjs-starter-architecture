@@ -32,4 +32,5 @@ module.exports = {
   '@typescript-eslint/no-meaningless-void-operator': 'error',
   '@typescript-eslint/no-unnecessary-condition': 'warn',
   '@typescript-eslint/member-ordering': 'warn',
+  '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'explicit' }],
 };

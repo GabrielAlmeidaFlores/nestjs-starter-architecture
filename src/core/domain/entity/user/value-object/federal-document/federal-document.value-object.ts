@@ -13,7 +13,7 @@ export class FederalDocument {
     this.value = value;
   }
 
-  static create(
+  public static create(
     value: string,
   ): Either<InvalidFederalDocumentError, FederalDocument> {
     if (!FederalDocument.isValid(value)) {
@@ -23,7 +23,7 @@ export class FederalDocument {
     return Ok(new FederalDocument(value));
   }
 
-  static isValid(value: string): boolean {
+  public static isValid(value: string): boolean {
     const cpfRegex = /^(\d{3}\.?\d{3}\.?\d{3}-?\d{2})$/;
 
     const rgRegex = /^[0-9]{1,2}\.?[0-9]{3}\.?[0-9]{3}-?[0-9Xx]{1}$/;

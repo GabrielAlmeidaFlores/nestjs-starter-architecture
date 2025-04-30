@@ -19,7 +19,7 @@ export class CommentLikeEntity extends BaseEntity {
     this.user = props.user;
   }
 
-  static create(
+  public static create(
     props: CommentLikeEntityPropsInterface,
   ): Either<never, CommentLikeEntity> {
     return Ok(new CommentLikeEntity(props));

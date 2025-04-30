@@ -20,7 +20,7 @@ export class CommentEntity extends BaseEntity {
     this.comment = props.comment ?? null;
   }
 
-  static create(
+  public static create(
     props: CommentEntityPropsInterface,
   ): Either<never, CommentEntity> {
     return Ok(new CommentEntity(props));

@@ -8,16 +8,17 @@ import { MapperInterface } from '@base/lib/mapper/mapper.interface';
 export class AutoMapperService implements MapperInterface {
   protected readonly _type = AutoMapperService.name;
 
-  constructor(@InjectMapper() private readonly mapper: Mapper) {}
+  public constructor(@InjectMapper() private readonly mapper: Mapper) {}
 
-  map<TSource, TDestination>(
+  public map<TSource, TDestination>(
     source: TSource,
     destination: new () => TDestination,
     sourceType: new () => TSource,
   ): TDestination {
     return this.mapper.map(source, sourceType, destination);
   }
-  mapArray<TSource, TDestination>(
+
+  public mapArray<TSource, TDestination>(
     sourceArray: TSource[],
     destination: new () => TDestination,
     sourceType: new () => TSource,

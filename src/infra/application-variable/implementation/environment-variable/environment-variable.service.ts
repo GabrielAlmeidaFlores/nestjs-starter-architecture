@@ -11,7 +11,7 @@ export class EnvironmentVariableService
 {
   protected readonly _type = EnvironmentVariableService.name;
 
-  constructor(private readonly configService: ConfigService) {}
+  public constructor(private readonly configService: ConfigService) {}
 
   public get<T>(key: ApplicationVariableEnum): T | null {
     return this.configService.get<T>(key.toString()) ?? null;

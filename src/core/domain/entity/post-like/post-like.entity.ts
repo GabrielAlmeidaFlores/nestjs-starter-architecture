@@ -19,7 +19,7 @@ export class PostLikeEntity extends BaseEntity {
     this.user = props.user;
   }
 
-  static create(
+  public static create(
     props: PostLikeEntityPropsInterface,
   ): Either<never, PostLikeEntity> {
     return Ok(new PostLikeEntity(props));

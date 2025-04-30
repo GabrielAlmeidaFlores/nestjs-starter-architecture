@@ -4,27 +4,27 @@ import type { Either } from '@shared/feature/functional/type/either.type';
 export class Success<T> {
   protected readonly _type: string = Success.name;
 
-  constructor(readonly value: T) {}
+  public constructor(public readonly value: T) {}
 
-  isFailure(): boolean {
+  public isFailure(): boolean {
     return false;
   }
 
-  isSuccess(): this is Success<T> {
+  public isSuccess(): this is Success<T> {
     return true;
   }
 
-  map<U>(fn: (value: T) => U): Success<U> {
+  public map<U>(fn: (value: T) => U): Success<U> {
     return new Success(fn(this.value));
   }
 
-  flatMap<U, F extends BaseError>(
+  public flatMap<U, F extends BaseError>(
     fn: (value: T) => Either<F, U>,
   ): Either<F, U> {
     return fn(this.value);
   }
 
-  getOrElse(_defaultValue: T): T {
+  public getOrElse(_defaultValue: T): T {
     return this.value;
   }
 }
