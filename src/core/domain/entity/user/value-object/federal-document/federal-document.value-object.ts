@@ -1,8 +1,8 @@
 import { InvalidFederalDocumentError } from '@core/domain/entity/user/value-object/federal-document/error/invalid-federal-document.error';
-import { Fail } from '@shared/feature/functional/fail.function';
-import { Ok } from '@shared/feature/functional/ok.function';
+import { Fail } from '@shared/feature/functional/function/fail.function';
+import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/either.type';
+import type { Either } from '@shared/feature/functional/type/either.type';
 
 export class FederalDocument {
   public readonly value: string;

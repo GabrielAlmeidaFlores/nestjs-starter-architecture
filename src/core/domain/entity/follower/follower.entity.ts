@@ -1,11 +1,11 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { FollowerAndFollowingMustBeDistinctError } from '@core/domain/entity/follower/error/follower-and-following-must-be-distinct.error';
-import { Fail } from '@shared/feature/functional/fail.function';
-import { Ok } from '@shared/feature/functional/ok.function';
+import { Fail } from '@shared/feature/functional/function/fail.function';
+import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { FollowerEntityPropsInterface } from '@core/domain/entity/follower/follower.entity.props';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
-import type { Either } from '@shared/feature/functional/either.type';
+import type { Either } from '@shared/feature/functional/type/either.type';
 
 export class FollowerEntity extends BaseEntity {
   public follower: UserEntity;

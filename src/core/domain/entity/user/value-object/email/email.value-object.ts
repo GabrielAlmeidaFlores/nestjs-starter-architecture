@@ -1,8 +1,8 @@
 import { InvalidEmailError } from '@core/domain/entity/user/value-object/email/error/invalid-email.error';
-import { Fail } from '@shared/feature/functional/fail.function';
-import { Ok } from '@shared/feature/functional/ok.function';
+import { Fail } from '@shared/feature/functional/function/fail.function';
+import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/either.type';
+import type { Either } from '@shared/feature/functional/type/either.type';
 
 export class Email {
   public readonly value: string;

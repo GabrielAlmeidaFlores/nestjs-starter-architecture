@@ -1,5 +1,5 @@
-import type { Either } from '@shared/feature/functional/either.type';
 import type { BaseError } from '@shared/feature/functional/error/base.error';
+import type { Either } from '@shared/feature/functional/type/either.type';
 
 export class Success<T> {
   protected readonly _type: string = Success.name;
