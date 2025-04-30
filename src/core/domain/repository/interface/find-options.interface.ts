@@ -1,11 +1,11 @@
 import type { DeepPartial } from '@base/core/domain/repository/type/deep-partial.type';
-import type { OrderType } from '@core/domain/repository/type/order.type';
-import type { RelationsType } from '@core/domain/repository/type/relations.type';
-import type { SelectType } from '@core/domain/repository/type/select.type';
+import type { FindOptionSelectType } from '@core/domain/repository/type/find-option-select.type';
+import type { FindOrderOptionType } from '@core/domain/repository/type/find-order-option.type';
+import type { FindRelationOptionType } from '@core/domain/repository/type/find-relation-option.type';
 
 export interface FindOptionsInterface<T> {
+  select?: FindOptionSelectType<T>;
   where?: DeepPartial<T> | DeepPartial<T>[];
-  select?: DeepPartial<SelectType<T>>;
-  relations?: DeepPartial<RelationsType<T>>;
-  order?: DeepPartial<OrderType<T>>;
+  relations?: DeepPartial<FindRelationOptionType<T>>;
+  order?: DeepPartial<FindOrderOptionType<T>>;
 }

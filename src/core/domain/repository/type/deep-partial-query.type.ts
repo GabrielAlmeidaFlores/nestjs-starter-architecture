@@ -1,15 +1,15 @@
 import type { ObjectLiteral } from '@core/domain/repository/interface/object-literal.interface';
 
-type _QueryDeepPartial<T> = {
+type _DeepPartialQuery<T> = {
   [P in keyof T]?:
     | (T[P] extends Array<infer U>
-        ? Array<_QueryDeepPartial<U>>
+        ? Array<_DeepPartialQuery<U>>
         : T[P] extends ReadonlyArray<infer U>
-          ? ReadonlyArray<_QueryDeepPartial<U>>
-          : _QueryDeepPartial<T[P]>)
+          ? ReadonlyArray<_DeepPartialQuery<U>>
+          : _DeepPartialQuery<T[P]>)
     | (() => string);
 };
 
-export type QueryDeepPartial<T> = _QueryDeepPartial<
+export type DeepPartialQuery<T> = _DeepPartialQuery<
   ObjectLiteral extends T ? unknown : T
 >;
