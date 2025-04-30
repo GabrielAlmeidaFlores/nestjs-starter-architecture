@@ -4,7 +4,7 @@ import type { Either } from '@shared/feature/functional/type/either.type';
 export class Failure<E extends BaseError> {
   protected readonly _type: string = Failure.name;
 
-  public constructor(public readonly error: E) {}
+  public constructor(public readonly value: E) {}
 
   public isFailure(): this is Failure<E> {
     return true;
