@@ -1,4 +1,4 @@
-import type { FindOperatorType } from '@core/domain/repository/type/find-operator.type';
+import type { FindOperatorType } from '@core/domain/repository/type/find/find-operator.type';
 
 export type FindOptionWhereType<Entity> = {
   [P in keyof Entity]?: Entity[P] extends object
