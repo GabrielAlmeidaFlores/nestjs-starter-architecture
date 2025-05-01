@@ -1,5 +1,5 @@
 import type { DeepPartialType } from '@base/core/domain/repository/type/deep-partial.type';
-import type { Guid } from '@core/domain/entity/base/value-object/guid.value-object';
+import type { Guid } from '@core/domain/entity/base/value-object/guid/guid.value-object';
 import type { EntityNotFoundError } from '@core/domain/repository/error/entity-not-found.error';
 import type { QueryFailedError } from '@core/domain/repository/error/query-failed.error';
 import type { FindOptionInterface } from '@core/domain/repository/interface/find/find-option.interface';
