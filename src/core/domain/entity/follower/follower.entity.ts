@@ -3,7 +3,7 @@ import { FollowerAndFollowingMustBeDistinctError } from '@core/domain/entity/fol
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { FollowerEntityPropsInterface } from '@core/domain/entity/follower/follower.entity.props';
+import type { FollowerEntityPropsInterface } from '@core/domain/entity/follower/follower.entity.props.interface';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 

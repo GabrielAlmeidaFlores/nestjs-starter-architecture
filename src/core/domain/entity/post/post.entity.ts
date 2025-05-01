@@ -1,7 +1,7 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { PostEntityPropsInterface } from '@core/domain/entity/post/post.entity.props';
+import type { PostEntityPropsInterface } from '@core/domain/entity/post/post.entity.props.interface';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 

@@ -1,6 +1,6 @@
 import { Guid } from '@core/domain/entity/base/value-object/guid.value-object';
 
-import type { BaseEntityPropsInterface } from '@core/domain/entity/base/base.entity.props';
+import type { BaseEntityPropsInterface } from '@core/domain/entity/base/base.entity.props.interface';
 
 export abstract class BaseEntity {
   public id: Guid;

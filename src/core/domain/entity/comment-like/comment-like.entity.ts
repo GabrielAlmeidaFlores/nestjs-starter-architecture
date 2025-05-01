@@ -2,7 +2,7 @@ import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { CommentEntity } from '@core/domain/entity/comment/comment.entity';
-import type { CommentLikeEntityPropsInterface } from '@core/domain/entity/comment-like/comment-like.entity.props';
+import type { CommentLikeEntityPropsInterface } from '@core/domain/entity/comment-like/comment-like.entity.props.interface';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
