@@ -1,5 +1,5 @@
-import type { FindOperator } from '@core/domain/repository/type/find-option-where.type';
+import type { FindOperatorType } from '@core/domain/repository/type/find-operator.type';
 
-export function equal<T>(value: T): FindOperator<T> {
+export function equal<T>(value: T): FindOperatorType<T> {
   return { _type: 'equal', value };
 }

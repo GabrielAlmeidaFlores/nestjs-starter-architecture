@@ -2,7 +2,7 @@ import { InvalidGuidError } from '@core/domain/entity/base/value-object/guid/err
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class Guid {
   public readonly value: string;
@@ -13,7 +13,7 @@ export class Guid {
     this.value = value;
   }
 
-  public static create(value: string): Either<InvalidGuidError, Guid> {
+  public static create(value: string): EitherType<InvalidGuidError, Guid> {
     if (!Guid.isValid(value)) {
       return Fail(new InvalidGuidError());
     }

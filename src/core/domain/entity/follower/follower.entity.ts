@@ -5,7 +5,7 @@ import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { FollowerEntityPropsInterface } from '@core/domain/entity/follower/follower.entity.props';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class FollowerEntity extends BaseEntity {
   public follower: UserEntity;
@@ -22,7 +22,7 @@ export class FollowerEntity extends BaseEntity {
 
   public static create(
     props: FollowerEntityPropsInterface,
-  ): Either<FollowerAndFollowingMustBeDistinctError, FollowerEntity> {
+  ): EitherType<FollowerAndFollowingMustBeDistinctError, FollowerEntity> {
     if (
       !FollowerEntity.isFollowerDistinctFromFollowing(
         props.follower,

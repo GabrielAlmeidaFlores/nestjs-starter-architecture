@@ -1,2 +1,2 @@
-export const Empty: unique symbol = Symbol('empty');
-export type Empty = typeof Empty;
+export const EmptyType: unique symbol = Symbol('empty');
+export type EmptyType = typeof EmptyType;

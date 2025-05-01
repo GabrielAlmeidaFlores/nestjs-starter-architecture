@@ -1,5 +1,5 @@
 import type { BaseError } from '@shared/feature/functional/error/base.error';
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class Success<T> {
   protected readonly _type: string = Success.name;
@@ -19,8 +19,8 @@ export class Success<T> {
   }
 
   public flatMap<U, F extends BaseError>(
-    fn: (value: T) => Either<F, U>,
-  ): Either<F, U> {
+    fn: (value: T) => EitherType<F, U>,
+  ): EitherType<F, U> {
     return fn(this.value);
   }
 

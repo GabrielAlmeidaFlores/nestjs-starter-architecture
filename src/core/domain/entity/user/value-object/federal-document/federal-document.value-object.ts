@@ -2,7 +2,7 @@ import { InvalidFederalDocumentError } from '@core/domain/entity/user/value-obje
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class FederalDocument {
   public readonly value: string;
@@ -15,7 +15,7 @@ export class FederalDocument {
 
   public static create(
     value: string,
-  ): Either<InvalidFederalDocumentError, FederalDocument> {
+  ): EitherType<InvalidFederalDocumentError, FederalDocument> {
     if (!FederalDocument.isValid(value)) {
       return Fail(new InvalidFederalDocumentError());
     }

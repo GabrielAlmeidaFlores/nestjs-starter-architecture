@@ -1,5 +1,4 @@
-import type { FindOperator } from '@core/domain/repository/type/find-option-where.type';
-
-export function lessThan<T>(value: T): FindOperator<T> {
+import type { FindOperatorType } from '@core/domain/repository/type/find-operator.type';
+export function lessThan<T>(value: T): FindOperatorType<T> {
   return { _type: 'lessThan', value };
 }

@@ -2,7 +2,7 @@ import { InvalidEmailError } from '@core/domain/entity/user/value-object/email/e
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class Email {
   public readonly value: string;
@@ -13,7 +13,7 @@ export class Email {
     this.value = value;
   }
 
-  public static create(value: string): Either<InvalidEmailError, Email> {
+  public static create(value: string): EitherType<InvalidEmailError, Email> {
     if (!Email.isValid(value)) {
       return Fail(new InvalidEmailError());
     }

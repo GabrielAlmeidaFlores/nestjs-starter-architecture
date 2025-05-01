@@ -1,8 +1,8 @@
-export type FindOptionSelectProperty<Property> =
+type FindOptionSelectPropertyType<Property> =
   Property extends Promise<infer I>
-    ? FindOptionSelectProperty<NonNullable<I>>
+    ? FindOptionSelectPropertyType<NonNullable<I>>
     : Property extends Array<infer I>
-      ? FindOptionSelectProperty<NonNullable<I>>
+      ? FindOptionSelectPropertyType<NonNullable<I>>
       : // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
         Property extends Function
         ? never
@@ -17,11 +17,11 @@ export type FindOptionSelectProperty<Property> =
                 : Property extends Date
                   ? boolean
                   : Property extends object
-                    ? FindOptionSelect<Property>
+                    ? FindOptionSelectType<Property>
                     : boolean;
 
-export type FindOptionSelect<Entity> = {
+export type FindOptionSelectType<Entity> = {
   [P in keyof Entity]?: P extends 'toString'
     ? unknown
-    : FindOptionSelectProperty<NonNullable<Entity[P]>>;
+    : FindOptionSelectPropertyType<NonNullable<Entity[P]>>;
 };

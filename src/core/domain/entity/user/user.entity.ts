@@ -7,7 +7,7 @@ import type { GenderEnum } from '@core/domain/entity/user/enum/gender.enum';
 import type { UserEntityPropsInterface } from '@core/domain/entity/user/user.entity.props.interface';
 import type { Email } from '@core/domain/entity/user/value-object/email/email.value-object';
 import type { FederalDocument } from '@core/domain/entity/user/value-object/federal-document/federal-document.value-object';
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class UserEntity extends BaseEntity {
   public name: string;
@@ -32,7 +32,7 @@ export class UserEntity extends BaseEntity {
 
   public static create(
     props: UserEntityPropsInterface,
-  ): Either<UserTooYoungError, UserEntity> {
+  ): EitherType<UserTooYoungError, UserEntity> {
     if (!this.isDateOfBirthValid(props.dateOfBirth)) {
       return Fail(new UserTooYoungError());
     }

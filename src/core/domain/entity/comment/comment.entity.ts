@@ -3,7 +3,7 @@ import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { CommentEntityPropsInterface } from '@core/domain/entity/comment/comment.entity.props';
 import type { PostEntity } from '@core/domain/entity/post/post.entity';
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class CommentEntity extends BaseEntity {
   public value: string;
@@ -22,7 +22,7 @@ export class CommentEntity extends BaseEntity {
 
   public static create(
     props: CommentEntityPropsInterface,
-  ): Either<never, CommentEntity> {
+  ): EitherType<never, CommentEntity> {
     return Ok(new CommentEntity(props));
   }
 }

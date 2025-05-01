@@ -1,13 +1,13 @@
-export type DeepPartial<T> =
+export type DeepPartialType<T> =
   | T
   | (T extends Array<infer U>
-      ? DeepPartial<U>[]
+      ? DeepPartialType<U>[]
       : T extends Map<infer K, infer V>
-        ? Map<DeepPartial<K>, DeepPartial<V>>
+        ? Map<DeepPartialType<K>, DeepPartialType<V>>
         : T extends Set<infer M>
-          ? Set<DeepPartial<M>>
+          ? Set<DeepPartialType<M>>
           : T extends object
             ? {
-                [K in keyof T]?: DeepPartial<T[K]>;
+                [K in keyof T]?: DeepPartialType<T[K]>;
               }
             : T);

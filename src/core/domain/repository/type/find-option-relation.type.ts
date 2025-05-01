@@ -1,8 +1,8 @@
-export type FindOptionRelationProperty<Property> =
+type FindOptionRelationPropertyType<Property> =
   Property extends Promise<infer I>
-    ? FindOptionRelationProperty<NonNullable<I>> | boolean
+    ? FindOptionRelationPropertyType<NonNullable<I>> | boolean
     : Property extends Array<infer I>
-      ? FindOptionRelationProperty<NonNullable<I>> | boolean
+      ? FindOptionRelationPropertyType<NonNullable<I>> | boolean
       : Property extends string
         ? never
         : Property extends number
@@ -14,11 +14,11 @@ export type FindOptionRelationProperty<Property> =
               : Property extends Date
                 ? never
                 : Property extends object
-                  ? FindOptionRelation<Property> | boolean
+                  ? FindOptionRelationType<Property> | boolean
                   : boolean;
 
-export type FindOptionRelation<Entity> = {
+export type FindOptionRelationType<Entity> = {
   [P in keyof Entity]?: P extends 'toString'
     ? unknown
-    : FindOptionRelationProperty<NonNullable<Entity[P]>>;
+    : FindOptionRelationPropertyType<NonNullable<Entity[P]>>;
 };

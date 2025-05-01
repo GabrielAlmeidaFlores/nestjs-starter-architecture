@@ -1,4 +1,4 @@
-export type FindOptionOrderValue =
+type FindOptionOrderValueType =
   | 'ASC'
   | 'DESC'
   | 'asc'
@@ -10,30 +10,30 @@ export type FindOptionOrderValue =
       nulls?: 'first' | 'last' | 'FIRST' | 'LAST';
     };
 
-export type FindOptionOrderProperty<Property> =
+type FindOptionOrderPropertyType<Property> =
   Property extends Promise<infer I>
-    ? FindOptionOrderProperty<NonNullable<I>>
+    ? FindOptionOrderPropertyType<NonNullable<I>>
     : Property extends Array<infer I>
-      ? FindOptionOrderProperty<NonNullable<I>>
+      ? FindOptionOrderPropertyType<NonNullable<I>>
       : // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
         Property extends Function
         ? never
         : Property extends string
-          ? FindOptionOrderValue
+          ? FindOptionOrderValueType
           : Property extends number
-            ? FindOptionOrderValue
+            ? FindOptionOrderValueType
             : Property extends boolean
-              ? FindOptionOrderValue
+              ? FindOptionOrderValueType
               : Property extends ArrayBuffer
-                ? FindOptionOrderValue
+                ? FindOptionOrderValueType
                 : Property extends Date
-                  ? FindOptionOrderValue
+                  ? FindOptionOrderValueType
                   : Property extends object
-                    ? FindOptionOrder<Property> | FindOptionOrderValue
-                    : FindOptionOrderValue;
+                    ? FindOptionOrderType<Property> | FindOptionOrderValueType
+                    : FindOptionOrderValueType;
 
-export type FindOptionOrder<Entity> = {
+export type FindOptionOrderType<Entity> = {
   [P in keyof Entity]?: P extends 'toString'
     ? unknown
-    : FindOptionOrderProperty<NonNullable<Entity[P]>>;
+    : FindOptionOrderPropertyType<NonNullable<Entity[P]>>;
 };
