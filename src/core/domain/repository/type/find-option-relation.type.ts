@@ -1,15 +1,24 @@
-import type { BaseEntity } from '@base/core/domain/entity/base/base.entity';
+export type FindOptionRelationProperty<Property> =
+  Property extends Promise<infer I>
+    ? FindOptionRelationProperty<NonNullable<I>> | boolean
+    : Property extends Array<infer I>
+      ? FindOptionRelationProperty<NonNullable<I>> | boolean
+      : Property extends string
+        ? never
+        : Property extends number
+          ? never
+          : Property extends boolean
+            ? never
+            : Property extends ArrayBuffer
+              ? never
+              : Property extends Date
+                ? never
+                : Property extends object
+                  ? FindOptionRelation<Property> | boolean
+                  : boolean;
 
-export type FindOptionRelationsType<T> = {
-  [K in keyof T as T[K] extends BaseEntity
-    ? K
-    : T[K] extends Array<infer U>
-      ? U extends BaseEntity
-        ? K
-        : never
-      : never]?:
-    | true
-    | (T[K] extends Array<infer U>
-        ? FindOptionRelationsType<U>
-        : FindOptionRelationsType<T[K]>);
+export type FindOptionRelation<Entity> = {
+  [P in keyof Entity]?: P extends 'toString'
+    ? unknown
+    : FindOptionRelationProperty<NonNullable<Entity[P]>>;
 };

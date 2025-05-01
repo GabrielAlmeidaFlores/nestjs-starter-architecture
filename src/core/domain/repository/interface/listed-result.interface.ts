@@ -1,4 +1,4 @@
-export interface ListedResultInterface<T> {
+export interface ListedResult<T> {
   page: number;
   limit: number;
   totalItems: number;

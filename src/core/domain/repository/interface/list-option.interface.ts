@@ -1,8 +1,16 @@
-import type { ListSearchOptionInterface } from '@core/domain/repository/interface/list-search-option.interface';
+export interface SearchItemOption {
+  field: string;
+  search: string;
+}
 
-export interface ListOptionInterface {
+export interface ListSearchOption {
+  and?: SearchItemOption[];
+  or?: SearchItemOption[];
+}
+
+export interface ListOption {
   page: number;
   limit: number;
   sortField?: string;
-  search?: ListSearchOptionInterface;
+  search?: ListSearchOption;
 }
