@@ -45,11 +45,11 @@ export class UserEntity extends BaseEntity {
 
     const requiredMinimumAge = 18;
 
-    const eighteenYearsAgo = new Date(
+    const minimumBirthDate = new Date(
       today.getFullYear() - requiredMinimumAge,
       today.getMonth(),
       today.getDate(),
     );
-    return dateOfBirth <= eighteenYearsAgo;
+    return dateOfBirth <= minimumBirthDate;
   }
 }
