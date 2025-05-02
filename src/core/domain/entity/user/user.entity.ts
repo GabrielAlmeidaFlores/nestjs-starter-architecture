@@ -40,7 +40,7 @@ export class UserEntity extends BaseEntity {
     return Ok(new UserEntity(props));
   }
 
-  public static isDateOfBirthValid(dateOfBirth: Date): boolean {
+  private static isDateOfBirthValid(dateOfBirth: Date): boolean {
     const today = new Date();
 
     const requiredMinimumAge = 18;

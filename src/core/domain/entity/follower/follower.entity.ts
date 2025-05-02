@@ -1,5 +1,5 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
-import { FollowerAndFollowingMustBeDistinctError } from '@core/domain/entity/follower/error/follower-and-following-must-be-distinct.error';
+import { FollowerEqualsFollowingError } from '@core/domain/entity/follower/error/follower-equals-following.error';
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
@@ -22,20 +22,20 @@ export class FollowerEntity extends BaseEntity {
 
   public static create(
     props: FollowerEntityPropsInterface,
-  ): EitherType<FollowerAndFollowingMustBeDistinctError, FollowerEntity> {
+  ): EitherType<FollowerEqualsFollowingError, FollowerEntity> {
     if (
       !FollowerEntity.isFollowerDistinctFromFollowing(
         props.follower,
         props.following,
       )
     ) {
-      return Fail(new FollowerAndFollowingMustBeDistinctError());
+      return Fail(new FollowerEqualsFollowingError());
     }
 
     return Ok(new FollowerEntity(props));
   }
 
-  public static isFollowerDistinctFromFollowing(
+  private static isFollowerDistinctFromFollowing(
     follower: UserEntity,
     following: UserEntity,
   ): boolean {
