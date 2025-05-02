@@ -1,5 +1,4 @@
 import type { BaseEntity } from '@core/domain/entity/base/base.entity';
-import type { BaseEntityPropsInterface } from '@core/domain/entity/base/base.entity.props.interface';
 import type { Guid } from '@core/domain/entity/base/value-object/guid/guid.value-object';
 import type { EntityNotFoundError } from '@core/domain/repository/error/entity-not-found.error';
 import type { QueryFailedError } from '@core/domain/repository/error/query-failed.error';
@@ -11,10 +10,7 @@ import type { DeepPartialType } from '@core/domain/repository/type/partial/deep-
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 import type { EmptyType } from '@shared/feature/functional/type/emtpy.type';
 
-export interface BaseRepositoryInterface<
-  Props extends BaseEntityPropsInterface,
-  Entity extends BaseEntity,
-> {
+export interface BaseRepositoryInterface<Entity extends BaseEntity> {
   create(data: Entity): Promise<EitherType<QueryFailedError, EmptyType>>;
 
   update(
@@ -31,20 +27,20 @@ export interface BaseRepositoryInterface<
   ): Promise<
     EitherType<
       EntityNotFoundError | QueryFailedError,
-      DeepPartialObjectType<Props>
+      DeepPartialObjectType<Entity>
     >
   >;
 
   find(
     options: FindOptionInterface<Entity>,
-  ): Promise<EitherType<QueryFailedError, DeepPartialObjectType<Props>[]>>;
+  ): Promise<EitherType<QueryFailedError, DeepPartialObjectType<Entity>[]>>;
 
   list(
     options: ListOptionInterface,
   ): Promise<
     EitherType<
       QueryFailedError,
-      ListedResultInterface<DeepPartialObjectType<Props>>
+      ListedResultInterface<DeepPartialObjectType<Entity>>
     >
   >;
 }

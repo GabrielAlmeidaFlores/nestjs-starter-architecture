@@ -5,18 +5,13 @@ type PrimitiveType =
   | symbol
   | bigint
   | null
-  | undefined;
+  | undefined
+  | Date;
 
 export type DeepPartialObjectType<T> = T extends PrimitiveType
   ? T
   : T extends object
-    ? {
-        [K in keyof T]: T[K] extends infer U
-          ? U extends PrimitiveType
-            ? U
-            : U extends object
-              ? Partial<DeepPartialObjectType<U>>
-              : U
-          : never;
-      }
+    ? Partial<{
+        [K in keyof T]: DeepPartialObjectType<T[K]>;
+      }>
     : T;
