@@ -5,8 +5,8 @@ import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { GenderEnum } from '@core/domain/entity/user/enum/gender.enum';
 import type { UserEntityPropsInterface } from '@core/domain/entity/user/user.entity.props.interface';
-import type { Email } from '@core/domain/entity/user/value-object/email/email.value-object';
-import type { FederalDocument } from '@core/domain/entity/user/value-object/federal-document/federal-document.value-object';
+import type { Email } from '@core/domain/value-object/email/email.value-object';
+import type { FederalDocument } from '@core/domain/value-object/federal-document/federal-document.value-object';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class UserEntity extends BaseEntity {
@@ -45,11 +45,11 @@ export class UserEntity extends BaseEntity {
 
     const requiredMinimumAge = 18;
 
-    const eighteenYearsAgo = new Date(
+    const minimumBirthDate = new Date(
       today.getFullYear() - requiredMinimumAge,
       today.getMonth(),
       today.getDate(),
     );
-    return dateOfBirth <= eighteenYearsAgo;
+    return dateOfBirth <= minimumBirthDate;
   }
 }
