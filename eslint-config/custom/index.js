@@ -22,11 +22,26 @@ const convention = {
   },
 };
 
+const local = {
+  plugin: {
+    'local-rule': {
+      rules: {
+        'restrict-value-object': require('./local/restrict-value-object.js'),
+      },
+    },
+  },
+  rules: {
+    'local-rule/restrict-value-object': 'warn',
+  },
+};
+
 module.exports = {
   plugin: {
     ...convention.plugin,
+    ...local.plugin,
   },
   rules: {
     ...convention.rules,
+    ...local.rules,
   },
 };

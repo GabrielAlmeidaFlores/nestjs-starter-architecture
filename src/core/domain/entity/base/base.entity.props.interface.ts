@@ -1,4 +1,4 @@
-import type { Guid } from '@core/domain/entity/base/value-object/guid/guid.value-object';
+import type { Guid } from '@core/domain/value-object/guid/guid.value-object';
 
 export interface BaseEntityPropsInterface {
   id?: Guid;
