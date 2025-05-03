@@ -1,14 +1,14 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { PostEntityPropsInterface } from '@core/domain/entity/post/post.entity.props';
+import type { PostEntityPropsInterface } from '@core/domain/entity/post/post.entity.props.interface';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class PostEntity extends BaseEntity {
-  public image: string;
-  public description: string;
-  public user: UserEntity;
+  public readonly image: string;
+  public readonly description: string;
+  public readonly user: UserEntity;
 
   protected readonly _type = PostEntity.name;
 
@@ -22,7 +22,7 @@ export class PostEntity extends BaseEntity {
 
   public static create(
     props: PostEntityPropsInterface,
-  ): Either<never, PostEntity> {
+  ): EitherType<never, PostEntity> {
     return Ok(new PostEntity(props));
   }
 }

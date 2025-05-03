@@ -1,19 +1,16 @@
-import { InvalidGuidError } from '@core/domain/entity/base/value-object/guid/error/invalid-guid.error';
+import { InvalidGuidError } from '@core/domain/value-object/guid/error/invalid-guid.error';
 import { Fail } from '@shared/feature/functional/function/fail.function';
 import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { Either } from '@shared/feature/functional/type/either.type';
+import type { ValueObjectInterface } from '@core/domain/value-object/value-object.interface';
+import type { EitherType } from '@shared/feature/functional/type/either.type';
 
-export class Guid {
-  public readonly value: string;
-
+export class Guid implements ValueObjectInterface<Guid> {
   protected readonly _type = Guid.name;
 
-  private constructor(value: string) {
-    this.value = value;
-  }
+  private constructor(public readonly value: string) {}
 
-  public static create(value: string): Either<InvalidGuidError, Guid> {
+  public static create(value: string): EitherType<InvalidGuidError, Guid> {
     if (!Guid.isValid(value)) {
       return Fail(new InvalidGuidError());
     }
@@ -34,7 +31,7 @@ export class Guid {
     return new Guid(guid);
   }
 
-  public static isValid(value: string): boolean {
+  private static isValid(value: string): boolean {
     const guidRegex =
       /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     return guidRegex.test(value);
