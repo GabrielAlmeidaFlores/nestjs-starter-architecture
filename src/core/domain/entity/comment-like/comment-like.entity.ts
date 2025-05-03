@@ -7,8 +7,8 @@ import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class CommentLikeEntity extends BaseEntity {
-  public comment: CommentEntity;
-  public user: UserEntity;
+  public readonly comment: CommentEntity;
+  public readonly user: UserEntity;
 
   protected readonly _type = CommentLikeEntity.name;
 

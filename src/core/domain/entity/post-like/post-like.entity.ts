@@ -7,8 +7,8 @@ import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class PostLikeEntity extends BaseEntity {
-  public post: PostEntity;
-  public user: UserEntity;
+  public readonly post: PostEntity;
+  public readonly user: UserEntity;
 
   protected readonly _type = PostLikeEntity.name;
 

@@ -27,11 +27,13 @@ const local = {
     'local-rule': {
       rules: {
         'restrict-value-object': require('./local/restrict-value-object.js'),
+        'restrict-entity-object': require('./local/restrict-entity-object.js'),
       },
     },
   },
   rules: {
     'local-rule/restrict-value-object': 'warn',
+    'local-rule/restrict-entity-object': 'warn',
   },
 };
 

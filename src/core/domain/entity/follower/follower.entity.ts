@@ -8,8 +8,8 @@ import type { UserEntity } from '@core/domain/entity/user/user.entity';
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class FollowerEntity extends BaseEntity {
-  public follower: UserEntity;
-  public following: UserEntity;
+  public readonly follower: UserEntity;
+  public readonly following: UserEntity;
 
   protected readonly _type = FollowerEntity.name;
 
@@ -35,7 +35,7 @@ export class FollowerEntity extends BaseEntity {
     return Ok(new FollowerEntity(props));
   }
 
-  private static isFollowerDistinctFromFollowing(
+  public static isFollowerDistinctFromFollowing(
     follower: UserEntity,
     following: UserEntity,
   ): boolean {

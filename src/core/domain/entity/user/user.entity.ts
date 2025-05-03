@@ -10,12 +10,12 @@ import type { FederalDocument } from '@core/domain/value-object/federal-document
 import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class UserEntity extends BaseEntity {
-  public name: string;
-  public dateOfBirth: Date;
-  public gender: GenderEnum;
-  public email: Email;
-  public password: string;
-  public federalDocument: FederalDocument;
+  public readonly name: string;
+  public readonly dateOfBirth: Date;
+  public readonly gender: GenderEnum;
+  public readonly email: Email;
+  public readonly password: string;
+  public readonly federalDocument: FederalDocument;
 
   protected readonly _type = UserEntity.name;
 
@@ -40,7 +40,7 @@ export class UserEntity extends BaseEntity {
     return Ok(new UserEntity(props));
   }
 
-  private static isDateOfBirthValid(dateOfBirth: Date): boolean {
+  public static isDateOfBirthValid(dateOfBirth: Date): boolean {
     const today = new Date();
 
     const requiredMinimumAge = 18;
