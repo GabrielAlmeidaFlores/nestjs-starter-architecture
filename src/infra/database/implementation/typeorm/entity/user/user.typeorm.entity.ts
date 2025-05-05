@@ -1,14 +1,27 @@
+import { Column } from 'typeorm';
+
+import { UserGenderEnum } from '@core/domain/enum/user-gender.enum';
 import { BaseTypeOrmEntity } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity';
 
-import type { UserGenderEnum } from '@core/domain/enum/user-gender.enum';
 import type { UserTypeormEntityPropsInterface } from '@infra/database/implementation/typeorm/entity/user/user.typeorm.entity.props.interface';
 
 export class UserTypeormEntity extends BaseTypeOrmEntity {
+  @Column({ name: 'name', type: 'varchar', length: 100 })
   public name: string;
+
+  @Column({ name: 'date_of_birth', type: 'date' })
   public dateOfBirth: Date;
+
+  @Column({ name: 'gender', type: 'simple-enum', enum: UserGenderEnum })
   public gender: UserGenderEnum;
+
+  @Column({ name: 'email', type: 'varchar', length: 100 })
   public email: string;
+
+  @Column({ name: 'password', type: 'char', length: 60 })
   public password: string;
+
+  @Column({ name: 'federal_document', type: 'char', length: 11 })
   public federalDocument: string;
 
   protected readonly _type = UserTypeormEntity.name;
