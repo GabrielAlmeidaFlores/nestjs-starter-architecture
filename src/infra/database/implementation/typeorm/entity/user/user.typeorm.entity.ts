@@ -1,12 +1,12 @@
 import { BaseTypeOrmEntity } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity';
 
-import type { GenderEnum } from '@core/domain/entity/user/enum/gender.enum';
+import type { UserGenderEnum } from '@core/domain/enum/user-gender.enum';
 import type { UserTypeormEntityPropsInterface } from '@infra/database/implementation/typeorm/entity/user/user.typeorm.entity.props.interface';
 
 export class UserTypeormEntity extends BaseTypeOrmEntity {
   public name: string;
   public dateOfBirth: Date;
-  public gender: GenderEnum;
+  public gender: UserGenderEnum;
   public email: string;
   public password: string;
   public federalDocument: string;
