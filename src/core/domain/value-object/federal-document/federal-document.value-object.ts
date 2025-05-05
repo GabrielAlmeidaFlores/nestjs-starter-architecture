@@ -1,26 +1,17 @@
 import { InvalidFederalDocumentError } from '@core/domain/value-object/federal-document/error/invalid-federal-document.error';
-import { Fail } from '@shared/feature/functional/function/fail.function';
-import { Ok } from '@shared/feature/functional/function/ok.function';
 
-import type { ValueObjectInterface } from '@core/domain/value-object/value-object.interface';
-import type { EitherType } from '@shared/feature/functional/type/either.type';
+import type { BaseValueObject } from '@core/domain/value-object/base/base.value-object';
 
-export class FederalDocument implements ValueObjectInterface<FederalDocument> {
+export class FederalDocument implements BaseValueObject<FederalDocument> {
   protected readonly _type = FederalDocument.name;
 
-  private constructor(public readonly value: string) {}
-
-  public static create(
-    value: string,
-  ): EitherType<InvalidFederalDocumentError, FederalDocument> {
-    if (!FederalDocument.isValid(value)) {
-      return Fail(new InvalidFederalDocumentError());
+  private constructor(public readonly value: string) {
+    if (!this.isValid(value)) {
+      throw new InvalidFederalDocumentError();
     }
-
-    return Ok(new FederalDocument(value));
   }
 
-  private static isValid(value: string): boolean {
+  public isValid(value: string): boolean {
     const cpfRegex = /^(\d{3}\.?\d{3}\.?\d{3}-?\d{2})$/;
 
     const rgRegex = /^[0-9]{1,2}\.?[0-9]{3}\.?[0-9]{3}-?[0-9Xx]{1}$/;

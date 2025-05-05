@@ -9,7 +9,7 @@ export abstract class BaseEntity {
   public deletedAt: Date | null;
 
   protected constructor(props: BaseEntityPropsInterface) {
-    this.id = props.id ?? Guid.generate();
+    this.id = props.id ?? new Guid();
     this.createdAt = props.createdAt ?? new Date();
     this.updatedAt = props.updatedAt ?? new Date();
     this.deletedAt = props.deletedAt ?? null;
