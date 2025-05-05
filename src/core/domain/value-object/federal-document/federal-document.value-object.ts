@@ -5,7 +5,7 @@ import type { BaseValueObject } from '@core/domain/value-object/base/base.value-
 export class FederalDocument implements BaseValueObject<FederalDocument> {
   protected readonly _type = FederalDocument.name;
 
-  private constructor(public readonly value: string) {
+  public constructor(public readonly value: string) {
     if (!this.isValid(value)) {
       throw new InvalidFederalDocumentError();
     }
