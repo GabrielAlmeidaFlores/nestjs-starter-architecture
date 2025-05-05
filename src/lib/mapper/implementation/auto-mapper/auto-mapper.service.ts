@@ -12,16 +12,16 @@ export class AutoMapperService implements MapperInterface {
 
   public map<TSource, TDestination>(
     source: TSource,
-    destination: new () => TDestination,
     sourceType: new () => TSource,
+    destination: new () => TDestination,
   ): TDestination {
     return this.mapper.map(source, sourceType, destination);
   }
 
   public mapArray<TSource, TDestination>(
     sourceArray: TSource[],
-    destination: new () => TDestination,
     sourceType: new () => TSource,
+    destination: new () => TDestination,
   ): TDestination[] {
     return sourceArray.map((source) =>
       this.mapper.map(source, sourceType, destination),

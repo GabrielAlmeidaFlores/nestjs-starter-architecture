@@ -1,13 +1,13 @@
 export abstract class MapperInterface {
   public abstract map<TSource, TDestination>(
     source: TSource,
-    destination: new () => TDestination,
     sourceType: new () => TSource,
+    destination: new () => TDestination,
   ): TDestination;
 
   public abstract mapArray<TSource, TDestination>(
     sourceArray: TSource[],
-    destination: new () => TDestination,
     sourceType: new () => TSource,
+    destination: new () => TDestination,
   ): TDestination[];
 }
