@@ -1,11 +1,8 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { FollowerEqualsFollowingError } from '@core/domain/entity/follower/error/follower-equals-following.error';
-import { Fail } from '@shared/feature/functional/function/fail.function';
-import { Ok } from '@shared/feature/functional/function/ok.function';
 
 import type { FollowerEntityPropsInterface } from '@core/domain/entity/follower/follower.entity.props.interface';
 import type { UserEntity } from '@core/domain/entity/user/user.entity';
-import type { EitherType } from '@shared/feature/functional/type/either.type';
 
 export class FollowerEntity extends BaseEntity {
   public readonly follower: UserEntity;
@@ -16,26 +13,17 @@ export class FollowerEntity extends BaseEntity {
   private constructor(props: FollowerEntityPropsInterface) {
     super(props);
 
+    if (
+      !this.isFollowerDistinctFromFollowing(props.follower, props.following)
+    ) {
+      throw new FollowerEqualsFollowingError();
+    }
+
     this.follower = props.follower;
     this.following = props.following;
   }
 
-  public static create(
-    props: FollowerEntityPropsInterface,
-  ): EitherType<FollowerEqualsFollowingError, FollowerEntity> {
-    if (
-      !FollowerEntity.isFollowerDistinctFromFollowing(
-        props.follower,
-        props.following,
-      )
-    ) {
-      return Fail(new FollowerEqualsFollowingError());
-    }
-
-    return Ok(new FollowerEntity(props));
-  }
-
-  public static isFollowerDistinctFromFollowing(
+  public isFollowerDistinctFromFollowing(
     follower: UserEntity,
     following: UserEntity,
   ): boolean {
