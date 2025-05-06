@@ -4,6 +4,7 @@ import { ListedData } from '@core/domain/repository/object/listed/listed-data.ob
 
 import type { ListData } from '@core/domain/repository/object/list/list-data.object';
 import type { BaseTypeormEntity } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity';
+import type { UserTypeormEntity } from '@infra/database/implementation/typeorm/entity/user/user.typeorm.entity';
 import type {
   DeepPartial,
   FindManyOptions,
@@ -137,11 +138,22 @@ export abstract class BaseTypeormRepository<T extends BaseTypeormEntity> {
         return where;
       }
 
-      const excludedColumns = ['id', 'createdAt', 'updatedAt', 'password'];
+      type EntityKeysType = keyof BaseTypeormEntity | keyof UserTypeormEntity;
+
+      const excludedColumns: EntityKeysType[] = [
+        'id',
+        'createdAt',
+        'updatedAt',
+        'deletedAt',
+        'password',
+      ];
 
       const entity: EntityMetadata = this.repository.metadata;
       const columns: string[] = entity.columns
-        .filter((column) => !excludedColumns.includes(column.propertyName))
+        .filter(
+          (column) =>
+            !excludedColumns.includes(column.propertyName as EntityKeysType),
+        )
         .map((column) => column.propertyName);
 
       return columns.map(
