@@ -1,10 +1,10 @@
 import { BaseEntity } from '@core/domain/entity/base/base.entity';
 import { UserTooYoungError } from '@core/domain/entity/user/error/user-too-young.error';
 
+import type { UserGenderEnum } from '@core/domain/entity/user/enum/user-gender.enum';
 import type { UserEntityPropsInterface } from '@core/domain/entity/user/user.entity.props.interface';
-import type { UserGenderEnum } from '@core/domain/enum/user-gender.enum';
-import type { Email } from '@core/domain/value-object/email/email.value-object';
-import type { FederalDocument } from '@core/domain/value-object/federal-document/federal-document.value-object';
+import type { Email } from '@core/domain/entity/user/value-object/email/email.value-object';
+import type { FederalDocument } from '@core/domain/entity/user/value-object/federal-document/federal-document.value-object';
 
 export class UserEntity extends BaseEntity {
   public readonly name: string;

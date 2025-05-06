@@ -1,12 +1,12 @@
 import { Column, Entity } from 'typeorm';
 
-import { UserGenderEnum } from '@core/domain/enum/user-gender.enum';
-import { BaseTypeOrmEntity } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity';
+import { UserGenderEnum } from '@core/domain/entity/user/enum/user-gender.enum';
+import { BaseTypeormEntity } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity';
 
 import type { UserTypeormEntityPropsInterface } from '@infra/database/implementation/typeorm/entity/user/user.typeorm.entity.props.interface';
 
 @Entity({ name: 'user' })
-export class UserTypeormEntity extends BaseTypeOrmEntity {
+export class UserTypeormEntity extends BaseTypeormEntity {
   @Column({ name: 'name', type: 'varchar', length: 100 })
   public name: string;
 

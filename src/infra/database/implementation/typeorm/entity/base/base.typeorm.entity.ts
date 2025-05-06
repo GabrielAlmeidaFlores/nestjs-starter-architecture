@@ -7,7 +7,7 @@ import {
 
 import type { BaseTypeormEntityPropsInterface } from '@infra/database/implementation/typeorm/entity/base/base.typeorm.entity.props.interface';
 
-export abstract class BaseTypeOrmEntity {
+export abstract class BaseTypeormEntity {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
