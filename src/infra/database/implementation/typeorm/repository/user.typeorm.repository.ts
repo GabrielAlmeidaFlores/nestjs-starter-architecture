@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+import { Guid } from '@core/domain/entity/base/value-object/guid/guid.value-object';
 import { UserTypeormEntity } from '@infra/database/implementation/typeorm/entity/user/user.typeorm.entity';
 import { BaseTypeormRepository } from '@infra/database/implementation/typeorm/repository/base.typeorm.repository';
 
@@ -19,5 +20,9 @@ export class UserTypeormRepository
     repository: Repository<UserTypeormEntity>,
   ) {
     super(repository);
+  }
+
+  public async deleteUser(id: Guid): Promise<void> {
+    await this.delete(id.value);
   }
 }
