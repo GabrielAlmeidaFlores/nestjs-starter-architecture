@@ -5,7 +5,7 @@ import type { ValueObjectInterface } from '@core/domain/entity/base/value-object
 export class Email implements ValueObjectInterface<Email> {
   protected readonly _type = Email.name;
 
-  private constructor(public readonly value: string) {
+  public constructor(public readonly value: string) {
     if (!Email.isValid(value)) {
       throw new InvalidEmailError();
     }

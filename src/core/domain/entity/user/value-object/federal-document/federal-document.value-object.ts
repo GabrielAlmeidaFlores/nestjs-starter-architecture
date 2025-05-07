@@ -5,7 +5,7 @@ import type { ValueObjectInterface } from '@core/domain/entity/base/value-object
 export class FederalDocument implements ValueObjectInterface<FederalDocument> {
   protected readonly _type = FederalDocument.name;
 
-  private constructor(public readonly value: string) {
+  public constructor(public readonly value: string) {
     if (!FederalDocument.isValid(value)) {
       throw new InvalidFederalDocumentError();
     }

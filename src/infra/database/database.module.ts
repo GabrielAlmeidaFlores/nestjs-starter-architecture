@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserRepositoryGateway } from '@core/domain/repository/user.repository.gateway';
 import { UserTypeormRepository } from '@infra/database/implementation/typeorm/repository/user.typeorm.repository';
+import { TypeormModule } from '@infra/database/implementation/typeorm/typeorm.module';
 
 @Module({
-  imports: [TypeOrmModule],
+  imports: [TypeormModule],
   providers: [
     {
       provide: UserRepositoryGateway,

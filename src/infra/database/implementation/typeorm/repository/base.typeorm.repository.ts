@@ -39,7 +39,7 @@ export abstract class BaseTypeormRepository<T extends BaseTypeormEntity> {
     return await this.repository.findOne(options);
   }
 
-  protected async find(options?: FindManyOptions<T>): Promise<Array<T>> {
+  protected async find(options: FindManyOptions<T>): Promise<Array<T>> {
     return await this.repository.find(options);
   }
 
