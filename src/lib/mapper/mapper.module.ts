@@ -2,18 +2,18 @@ import { Module } from '@nestjs/common';
 
 import { AutoMapperModule } from '@base/lib/mapper/implementation/auto-mapper/auto-mapper.module';
 import { AutoMapperService } from '@base/lib/mapper/implementation/auto-mapper/auto-mapper.service';
-import { MapperInterface } from '@base/lib/mapper/mapper.interface';
+import { MapperGateway } from '@base/lib/mapper/mapper.gateway';
 
 @Module({
   imports: [AutoMapperModule],
   providers: [
     {
-      provide: MapperInterface,
+      provide: MapperGateway,
       useClass: AutoMapperService,
     },
     AutoMapperService,
   ],
-  exports: [MapperInterface],
+  exports: [MapperGateway],
 })
 export class MapperModule {
   protected readonly _type = MapperModule.name;

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 
 import { MapperModule } from '@base/lib/mapper/mapper.module';
+import { DatabaseModule } from '@infra/database/database.module';
 
 @Module({
-  imports: [MapperModule],
+  imports: [MapperModule, DatabaseModule],
   controllers: [],
   providers: [],
 })

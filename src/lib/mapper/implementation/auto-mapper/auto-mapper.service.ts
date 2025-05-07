@@ -2,10 +2,10 @@ import { Mapper } from '@automapper/core';
 import { InjectMapper } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
 
-import { MapperInterface } from '@base/lib/mapper/mapper.interface';
+import { MapperGateway } from '@base/lib/mapper/mapper.gateway';
 
 @Injectable()
-export class AutoMapperService implements MapperInterface {
+export class AutoMapperService implements MapperGateway {
   protected readonly _type = AutoMapperService.name;
 
   public constructor(@InjectMapper() private readonly mapper: Mapper) {}
