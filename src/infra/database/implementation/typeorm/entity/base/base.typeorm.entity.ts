@@ -9,18 +9,22 @@ import type { BaseTypeormEntityPropsInterface } from '@infra/database/implementa
 
 export abstract class BaseTypeormEntity {
   @PrimaryGeneratedColumn('uuid')
-  public id: string;
+  public id!: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  public createdAt: Date;
+  public createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  public updatedAt: Date;
+  public updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  public deletedAt: Date | null;
+  public deletedAt!: Date | null;
 
-  public constructor(props: BaseTypeormEntityPropsInterface) {
+  public constructor(props?: BaseTypeormEntityPropsInterface) {
+    if (!props) {
+      return;
+    }
+
     this.id = props.id;
     this.createdAt = props.createdAt;
     this.updatedAt = props.updatedAt;

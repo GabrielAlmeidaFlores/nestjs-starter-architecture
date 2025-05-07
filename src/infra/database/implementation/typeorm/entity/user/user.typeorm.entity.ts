@@ -8,27 +8,31 @@ import type { UserTypeormEntityPropsInterface } from '@infra/database/implementa
 @Entity({ name: 'user' })
 export class UserTypeormEntity extends BaseTypeormEntity {
   @Column({ name: 'name', type: 'varchar', length: 100 })
-  public name: string;
+  public name!: string;
 
   @Column({ name: 'date_of_birth', type: 'date' })
-  public dateOfBirth: Date;
+  public dateOfBirth!: Date;
 
   @Column({ name: 'gender', type: 'simple-enum', enum: UserGenderEnum })
-  public gender: UserGenderEnum;
+  public gender!: UserGenderEnum;
 
   @Column({ name: 'email', type: 'varchar', length: 100 })
-  public email: string;
+  public email!: string;
 
   @Column({ name: 'password', type: 'char', length: 60 })
-  public password: string;
+  public password!: string;
 
   @Column({ name: 'federal_document', type: 'char', length: 11 })
-  public federalDocument: string;
+  public federalDocument!: string;
 
   protected readonly _type = UserTypeormEntity.name;
 
-  public constructor(props: UserTypeormEntityPropsInterface) {
+  public constructor(props?: UserTypeormEntityPropsInterface) {
     super(props);
+
+    if (!props) {
+      return;
+    }
 
     this.name = props.name;
     this.dateOfBirth = props.dateOfBirth;

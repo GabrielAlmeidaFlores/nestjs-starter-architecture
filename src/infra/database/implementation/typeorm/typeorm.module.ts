@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { MapperModule } from '@base/lib/mapper/mapper.module';
 import { TypeormIndex } from '@infra/database/implementation/typeorm/typeorm.index';
 import { DatabaseApplicationVariable } from '@shared/constant/application-variable/database.application-variable';
 
 @Module({
   imports: [
+    MapperModule,
+    TypeormIndex.dynamicModule,
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'mysql',
@@ -21,10 +24,9 @@ import { DatabaseApplicationVariable } from '@shared/constant/application-variab
         connectTimeout: 10000,
       }),
     }),
-    TypeOrmModule.forFeature(TypeormIndex.entities),
   ],
   providers: TypeormIndex.repositories,
-  exports: TypeormIndex.repositories,
+  exports: [TypeormIndex.dynamicModule, ...TypeormIndex.repositories],
 })
 export class TypeormModule {
   protected readonly _type = TypeormModule.name;

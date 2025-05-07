@@ -5,6 +5,7 @@
       "@core/*": ["./src/core/*"],
       "@shared/*": ["./src/shared/*"],
       "@infra/*": ["./src/infra/*"],
+      "@lib/*": ["./src/lib/*"],
       "@base/*": ["./src/*"]
     },
 
