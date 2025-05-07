@@ -20,8 +20,8 @@ export abstract class BaseTypeormEntity {
   @DeleteDateColumn({ name: 'deleted_at' })
   public deletedAt!: Date | null;
 
-  public constructor(props?: BaseTypeormEntityPropsInterface) {
-    if (!props) {
+  public constructor(props: BaseTypeormEntityPropsInterface) {
+    if (!this.isDefined(props)) {
       return;
     }
 
@@ -29,5 +29,9 @@ export abstract class BaseTypeormEntity {
     this.createdAt = props.createdAt;
     this.updatedAt = props.updatedAt;
     this.deletedAt = props.deletedAt;
+  }
+
+  protected isDefined<T>(value?: T): value is T {
+    return value !== undefined;
   }
 }

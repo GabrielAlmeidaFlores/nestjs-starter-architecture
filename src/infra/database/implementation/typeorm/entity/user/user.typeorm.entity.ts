@@ -27,10 +27,10 @@ export class UserTypeormEntity extends BaseTypeormEntity {
 
   protected readonly _type = UserTypeormEntity.name;
 
-  public constructor(props?: UserTypeormEntityPropsInterface) {
+  public constructor(props: UserTypeormEntityPropsInterface) {
     super(props);
 
-    if (!props) {
+    if (!this.isDefined(props)) {
       return;
     }
 
