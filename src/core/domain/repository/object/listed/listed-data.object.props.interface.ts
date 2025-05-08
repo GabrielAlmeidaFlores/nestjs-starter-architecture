@@ -3,5 +3,4 @@ export interface ListedDataObjectPropsInterface<T> {
   limit: number;
   totalItems: number;
   resource: T[];
-  resourceClass?: new (...args: unknown[]) => T;
 }

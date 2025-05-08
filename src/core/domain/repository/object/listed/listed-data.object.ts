@@ -6,7 +6,6 @@ export class ListedData<T> {
   public totalItems: number;
   public totalPages: number;
   public amountItemsCurrentPage: number;
-  public resource: T[];
 
   protected readonly _type = ListedData.name;
 
@@ -14,20 +13,7 @@ export class ListedData<T> {
     this.page = props.page;
     this.limit = props.limit;
     this.totalItems = props.totalItems;
-
-    const applyConstructorOnResources =
-      props.resource.length > 0 && props.resourceClass !== undefined;
-
-    if (applyConstructorOnResources) {
-      this.resource = props.resource.map((item) =>
-        props.resourceClass ? new props.resourceClass(item) : item,
-      );
-    } else {
-      this.resource = props.resource;
-    }
-
     this.totalPages = Math.ceil(props.totalItems / props.limit);
-
     this.totalPages = this.totalPages ? this.totalPages : 0;
     this.amountItemsCurrentPage = props.resource.length;
   }
